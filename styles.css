@@ -1,0 +1,109 @@
+::root{
+	
+}
+html, body{
+	font-size: 1.5em;
+	font-family: "Roboto";
+	padding: 0;
+	margin: 0;
+	-webkit-box-sizing: border-box;
+	box-sizing: border-box;
+	color: white;
+	transition: all 2s;
+}
+body{
+	background-color: rgba(254, 189, 38, 0.5);
+	font-family: 'Raleway', sans-serif;
+}
+.time,.date
+{
+	color: #11718E;
+	background-color: white;
+	text-align: center;
+	padding: 1%;
+  
+
+}
+.date
+{
+		border-bottom:5px solid #11718E;
+		  border-bottom-left-radius: 60px;
+		  border-bottom-right-radius: 60px;
+}
+.clock{
+	width: 15rem;
+	height: 15rem;
+	margin: 50px auto;
+	position: relative;
+	background-color: rgb(0, 154, 211);
+	border-radius: 100%;
+	box-shadow: 0 10px 20px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23);
+	
+}
+.progress{
+	width: 20rem;
+	height: 20rem;
+	padding: 8px;
+	position: relative;
+	border-radius: 100%;
+	background-color: transparent;
+	margin: 60px auto auto;
+	background-image:
+		linear-gradient(90deg, rgba(254, 222, 146, 1) 50%, rgba(0, 0, 0, 0) 50%, rgba(0, 0, 0, 0)), linear-gradient(96deg, rgb(17, 113, 142) 50%, transparent 50%, transparent);
+	transition-property: all;
+	transition-duration: 0.5s;
+	transition-timing-function: ease-in;
+}
+
+.clock .face{
+	position: absolute;
+	width: 100%;
+	height: 100%;
+	border-radius: 50%;
+	padding: 45px 0 0;
+}
+.face .day{
+	position: absolute;
+	left: 75%;
+	top: 43%;
+	font-weight:100;
+	font-size: 1rem;
+	padding: 5px 8px;
+	border: 1px solid white;
+	
+}
+.face .rotor{
+	width: 4px;
+	height: 4px;
+	border-radius: 100%;
+	background: black;
+	position: absolute;
+	z-index: 25;
+	left: 49.4%;
+	bottom: 51%;
+	border: 3px solid black;
+}
+.face .hand{
+	position: absolute;
+	width: 50%;
+	height: 12px;
+	border-top-left-radius: 5px;
+	border-bottom-left-radius: 5px;
+	transform-origin:90%;
+	background: white;
+	bottom: 50%;
+	left: 6%;
+	transition: all 1s ease;
+}
+.face .min{
+	z-index: 24;
+	background: ;
+	transform: rotate(0deg);
+	box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
+}
+.face .hour{
+	width: 40%;
+	left: 15%;
+	transform: rotate(0deg);
+	box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
+}
