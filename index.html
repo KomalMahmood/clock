@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+
+	<link rel="stylesheet" type="text/css" href="styles.css">
+	<link href="https://fonts.googleapis.com/css?family=Lobster|Raleway:400,700" rel="stylesheet">
+</head>
+<body>
+	<div class="time"></div>
+	<div class="date"></div>
+	
+<div class="progress sec">
+		<div class="clock">
+			<div class="face">
+				<div class="day">Thu</div>
+				<div class="hand hour"></div>
+				<div class="hand min"></div>
+				<div class="rotor"></div>
+
+			</div>
+		</div>
+	</div>
+
+</body>
+<script type="text/javascript">
+	
+	var now, $hour, $am_pm, $day, $min, $time,$date;
+
+	$hour = document.querySelector('.hour');
+	$day = document.querySelector('.day');
+	$min = document.querySelector('.min');
+	$sec = document.querySelector('.progress');
+    $date=document.querySelector('.date');
+    $time=document.querySelector('.time');
+
+	setInterval(setTime, 1000);
+
+	function setTime() {
+		now = new Date();
+		
+		var currentHour,currentDay,currentMin,minDeg,hourDeg, currentSec, secDeg;
+		
+	   currentDay = now.toDateString().substring(0, 3);
+	   var currentDate = now.toDateString().substring(9, 11);
+		$day.innerHTML = currentDay;
+		
+		$date.innerHTML = now.toDateString().substring(4,17);
+		
+		currentMin = now.getMinutes();
+		minDeg = ((currentMin / 60) * 360) + 90;
+		$min.style.transform = `rotate(${minDeg}deg)`
+		
+		currentHour = now.getHours();
+	    hourDeg = ((currentHour / 12) * 360) + 90+(0.6*currentMin);
+		$hour.style.transform = `rotate(${hourDeg}deg)`;
+
+	    currentSec = now.getSeconds();
+		secDeg = ((currentSec / 60) * 360);
+		
+
+		var hr;
+		if(currentHour>12){$am_pm='PM';
+		hr=currentHour-12;}
+		else{$am_pm='AM';var hr=currentHour;}
+        $time.innerHTML = zeros(hr) + " : " + zeros(currentMin) + " : " + zeros(currentSec) + "  " + $am_pm; 
+        
+        function zeros(num) {
+    if (num < 10) {
+        num = '0' + num
+    };
+    return num;
+}
+
+		function setSec() {
+			if (currentSec === 0){
+				$sec.style.backgroundImage = `linear-gradient(90deg, rgb(130, 196, 205) 50%, rgba(0, 0, 0, 0) 50%, rgba(0, 0, 0, 0)), linear-gradient(90deg, #fff 50%, rgb(130, 196, 205) 50%, rgb(130, 196, 205))`;
+				$sec.style.transition = "all 1s ease";
+			}
+			if (currentSec > 30) {
+				$sec.style.backgroundImage = `linear-gradient(${-(90 -(secDeg - 180))}deg, rgb(17, 113, 142) 50%, rgba(0, 0, 0, 0) 50%, rgba(0, 0, 0, 0)), linear-gradient(270deg, rgb(17, 113, 142) 50%, transparent 50%, transparent)`;
+				$sec.style.transition = "all 1s ease";
+			}
+
+			if (currentSec < 30)
+				$sec.style.backgroundImage = `linear-gradient(90deg, rgba(254, 222, 146, 1)50%, rgba(0, 0, 0, 0) 50%, rgba(0, 0, 0, 0)), linear-gradient(${secDeg + 90}deg, rgb(17, 113, 142) 50%, transparent 50%, transparent`;
+		}
+		
+		setSec();
+		
+	}
+	
+
+</script>
+</html>
